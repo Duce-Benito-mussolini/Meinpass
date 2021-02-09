@@ -2,6 +2,7 @@ import tkinter as tk
 import string as st
 import random
 import ctypes
+import pyperclip
 
 
 try:
@@ -38,7 +39,10 @@ class Kisomojiretsuteigi():
 
 class Rancon():
     def randomer_one(self, given_sen):
-        return given_sen[random.randint(0, (len(given_sen))-1)]
+        try:
+            return given_sen[random.randint(0, (len(given_sen))-1)]
+        except ValueError:
+            return "ERROR"
     
     def randomer_charas(self, mojisuu, given_sen):
         kaerichi = ""
@@ -117,6 +121,12 @@ class Run_():
                     kigoshori.whether_on)))
 
 
+class Copy():
+    def copy(self):
+        pyperclip.copy(passen.get())
+
+
+
 root = tk.Tk()
 root.title("Meinpass")
 root.geometry("854x480")
@@ -136,10 +146,12 @@ password_label.prepre(380, 170)
 passen = tk.Entry()
 passen.place(x=324, y=200)
 
+# SPINBOX
 inpmojisu = tk.Spinbox(root, from_=1, to=999, increment=1, width=3)
 inpmojisu.delete(0, 1)
 inpmojisu.insert(0, 8)
-inpmojisu.place(x=340, y=280)
+inpmojisu.place(x=320, y=280)
+# /SPINBOX
 
 eikoshori = Buttonshories()
 eikoshori.independence(300, 360)
@@ -161,8 +173,12 @@ kigoshori.independence(510, 360)
 kigo_c = Button_Modern()
 kigo_c.koniro("記号", 490, 400, lambda:kigoshori.shori(510,360))
 
-Run = Button_Modern()
-Run.koniro("実行", 430, 275, Run_().hyoji)
+run = Button_Modern()
+run.koniro("実行", 390, 275, Run_().hyoji)
+
+passen_copy = Copy()
+copy = Button_Modern()
+copy.koniro("コピー", 470, 275, passen_copy.copy)
 
 
 root.mainloop()
