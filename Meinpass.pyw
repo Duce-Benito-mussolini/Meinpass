@@ -28,7 +28,7 @@ class FileManeger():
         with open("data.sav") as f:
             print(f.readlines()[0])
     
-    def readd(self, nambamme):
+    def shokichi(self, nambamme):
         with open("data.sav") as f:
             kaerichi = f.readlines()[0][nambamme]
         return kaerichi
@@ -102,10 +102,9 @@ class Label_Modern(Button_Modern):
 
 
 class Buttonshories():
-    def __init__(self, a):
+    def __init__(self, nambamme):
         filer = FileManeger()
-        self.whether_on = int(filer.readd(a))
-        print(self.whether_on)
+        self.whether_on = int(filer.shokichi(nambamme))
         self.label = Label_Modern()
         self.label.koniro(On_Off().onoff(self.whether_on))
     
