@@ -23,6 +23,16 @@ class Renzoku():
             count += 1
         return kaerichi
 
+class FileManeger():
+    def read(self):
+        with open("data.sav") as f:
+            print(f.readlines()[0])
+    
+    def readd(self, nambamme):
+        with open("data.sav") as f:
+            kaerichi = f.readlines()[0][nambamme]
+        return kaerichi
+
 
 class Kisomojiretsuteigi():
     def kisomojiretsu(self, eiko, eioo, suji, kigo):
@@ -92,8 +102,10 @@ class Label_Modern(Button_Modern):
 
 
 class Buttonshories():
-    def __init__(self):
-        self.whether_on = True
+    def __init__(self, a):
+        filer = FileManeger()
+        self.whether_on = int(filer.readd(a))
+        print(self.whether_on)
         self.label = Label_Modern()
         self.label.koniro(On_Off().onoff(self.whether_on))
     
@@ -125,10 +137,7 @@ class Copy():
         pyperclip.copy(entry.get())
 
 
-class FileManeger():
-    def read(self):
-        with open("data.sav") as f:
-            print(f.readlines()[0])
+
 
 
 root = tk.Tk()
@@ -157,22 +166,22 @@ inpmojisu.insert(0, 8)
 inpmojisu.place(x=300, y=280)
 # /SPINBOX
 
-eikoshori = Buttonshories()
+eikoshori = Buttonshories(0)
 eikoshori.independence(300, 360)
 eiko_c = Button_Modern()
 eiko_c.koniro("英(小)", 280, 400, lambda:eikoshori.shori(300,360))
 
-eiooshori = Buttonshories()
+eiooshori = Buttonshories(1)
 eiooshori.independence(370, 360)
 eioo_c = Button_Modern()
 eioo_c.koniro("英(大)", 350, 400, lambda:eiooshori.shori(370,360))
 
-sujishori = Buttonshories()
+sujishori = Buttonshories(2)
 sujishori.independence(440, 360)
 suji_c = Button_Modern()
 suji_c.koniro("数字", 420, 400, lambda:sujishori.shori(440,360))
 
-kigoshori = Buttonshories()
+kigoshori = Buttonshories(3)
 kigoshori.independence(510, 360)
 kigo_c = Button_Modern()
 kigo_c.koniro("記号", 490, 400, lambda:kigoshori.shori(510,360))
