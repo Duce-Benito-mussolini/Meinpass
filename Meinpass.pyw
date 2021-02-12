@@ -12,6 +12,10 @@ except:
 WHITE = "#ffffff"
 DARKBLUE = "#16212c"
 
+class Copy():
+    def copy(self, entry):
+        pyperclip.copy(entry.get())
+
 
 class Renzoku():
     def ifrenzoku(self, *dainyu, **hantei):
@@ -24,9 +28,13 @@ class Renzoku():
         return kaerichi
 
 class FileManeger():
-    def read(self):
-        with open("data.sav") as f:
-            print(f.readlines()[0])
+    def write(self):
+        with open("data.sav", mode="a") as f:
+            a = Copy()
+            b = pyperclip.copy(contents_name.get())
+            passenn = a.copy(passen)
+            print(b)
+            f.write("\n" + b)
     
     def shokichi(self, nambamme):
         with open("data.sav") as f:
@@ -131,9 +139,7 @@ class Run_():
                     kigoshori.whether_on)))
 
 
-class Copy():
-    def copy(self, entry):
-        pyperclip.copy(entry.get())
+
 
 
 
@@ -197,6 +203,6 @@ contencopy.koniro("コピー", 385, 110, lambda:on_button_copy.copy(contents_nam
 
 filer = FileManeger()
 saving = Button_Modern()
-saving.koniro("保存", 530, 275, filer.read)
+saving.koniro("保存", 530, 275, filer.write)
 
 root.mainloop()
