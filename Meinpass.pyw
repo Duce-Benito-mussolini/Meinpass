@@ -4,7 +4,6 @@ import random
 import ctypes
 import pyperclip
 
-
 try:
     ctypes.windll.shcore.SetProcessDpiAwareness(True)
 except:
@@ -126,6 +125,12 @@ class Copy():
         pyperclip.copy(entry.get())
 
 
+class FileManeger():
+    def read(self):
+        with open("data.sav") as f:
+            print(f.readlines()[0])
+
+
 root = tk.Tk()
 root.title("Meinpass")
 root.geometry("854x480")
@@ -149,7 +154,7 @@ passen.place(x=100, y=200)
 inpmojisu = tk.Spinbox(root, from_=1, to=999, increment=1, width=3)
 inpmojisu.delete(0, 1)
 inpmojisu.insert(0, 8)
-inpmojisu.place(x=320, y=280)
+inpmojisu.place(x=300, y=280)
 # /SPINBOX
 
 eikoshori = Buttonshories()
@@ -173,13 +178,17 @@ kigo_c = Button_Modern()
 kigo_c.koniro("記号", 490, 400, lambda:kigoshori.shori(510,360))
 
 run = Button_Modern()
-run.koniro("実行", 390, 275, Run_().hyoji)
+run.koniro("実行", 370, 275, Run_().hyoji)
 
 on_button_copy = Copy()
 passcopy = Button_Modern()
-passcopy.koniro("コピー", 470, 275, lambda:on_button_copy.copy(passen))
+passcopy.koniro("コピー", 450, 275, lambda:on_button_copy.copy(passen))
 
 contencopy = Button_Modern()
 contencopy.koniro("コピー", 385, 110, lambda:on_button_copy.copy(contents_name))
+
+filer = FileManeger()
+saving = Button_Modern()
+saving.koniro("保存", 530, 275, filer.read)
 
 root.mainloop()
