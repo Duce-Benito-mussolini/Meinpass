@@ -27,14 +27,11 @@ class Renzoku():
             count += 1
         return kaerichi
 
+
 class FileManeger():
     def write(self):
         with open("data.sav", mode="a") as f:
-            a = Copy()
-            b = pyperclip.copy(contents_name.get())
-            passenn = a.copy(passen)
-            print(b)
-            f.write("\n" + b)
+            f.write("\n" + contents_name.get() + "\n" + passen.get())
     
     def shokichi(self, nambamme):
         with open("data.sav") as f:
