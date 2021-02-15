@@ -3,7 +3,7 @@ import string as st
 import random
 import ctypes
 import pyperclip
-import tkinter.messagebox as tkm
+from tkinter import messagebox
 
 try:
     ctypes.windll.shcore.SetProcessDpiAwareness(True)
@@ -44,9 +44,10 @@ class Hozon():
     def hozon(self):
         filer = FileManeger()
         if contents_name.get() == "":
-            pass
+            messagebox.showerror("エラー", "コンテンツ名が設定されていません")
         else:
             filer.write()
+            messagebox.showinfo("保存", "保存されました")
 
 
 class Kisomojiretsuteigi():
