@@ -3,7 +3,9 @@ import string as st
 import random
 import ctypes
 import pyperclip
+import tkinter.ttk as ttk
 from tkinter import messagebox
+
 
 try:
     ctypes.windll.shcore.SetProcessDpiAwareness(True)
@@ -154,6 +156,14 @@ class Toridashi():
         sub.geometry("300x300")
         sub.resizable(0, 0)
         sub.configure(bg=DARKBLUE)
+        tree = ttk.Treeview(sub)
+        tree["columns"] = (1,2,3)
+        tree["show"] = "headings"
+        tree.column(1, width=150)
+        tree.column(2, width=150)
+        tree.heading(1, text="コンテンツ名")
+        tree.heading(2, text="パスワード")
+        tree.pack()
         sub.mainloop()
 
 
