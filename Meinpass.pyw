@@ -40,6 +40,19 @@ class FileManeger():
         with open("data.sav") as f:
             kaerichi = f.readlines()[0][nambamme]
         return kaerichi
+    
+    def reader(self):
+        count = 0
+        d = {}
+        ichijihozonpass = ""
+        with open("data.sav") as f:
+            for i in f.readlines():
+                count += 1
+                if count % 2 and count != 1:
+                    d[ichijihozonpass] = i
+                elif count != 1:
+                    ichijihozonpass = i
+        return d
 
 
 class Hozon():
@@ -153,16 +166,21 @@ class Toridashi():
     def toridashi_window(self):
         sub = tk.Tk()
         sub.title("Meinpass - 取出")
-        sub.geometry("300x300")
+        sub.geometry("800x800")
         sub.resizable(0, 0)
         sub.configure(bg=DARKBLUE)
+
         tree = ttk.Treeview(sub)
-        tree["columns"] = (1,2,3)
+        tree["columns"] = (1,2)
         tree["show"] = "headings"
+
         tree.column(1, width=150)
         tree.column(2, width=150)
         tree.heading(1, text="コンテンツ名")
         tree.heading(2, text="パスワード")
+        filer = FileManeger()
+        filer.reader()
+
         tree.pack()
         sub.mainloop()
 
