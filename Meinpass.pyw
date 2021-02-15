@@ -3,6 +3,7 @@ import string as st
 import random
 import ctypes
 import pyperclip
+import tkinter.messagebox as tkm
 
 try:
     ctypes.windll.shcore.SetProcessDpiAwareness(True)
@@ -37,6 +38,15 @@ class FileManeger():
         with open("data.sav") as f:
             kaerichi = f.readlines()[0][nambamme]
         return kaerichi
+
+
+class Hozon():
+    def hozon(self):
+        filer = FileManeger()
+        if contents_name.get() == "":
+            pass
+        else:
+            filer.write()
 
 
 class Kisomojiretsuteigi():
@@ -198,8 +208,8 @@ passcopy.koniro("コピー", 420, 275, lambda:on_button_copy.copy(passen))
 contencopy = Button_Modern()
 contencopy.koniro("コピー", 385, 110, lambda:on_button_copy.copy(contents_name))
 
-filer = FileManeger()
+hozoner = Hozon()
 saving = Button_Modern()
-saving.koniro("保存", 500, 275, filer.write)
+saving.koniro("保存", 500, 275, hozoner.hozon)
 
 root.mainloop()
