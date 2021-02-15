@@ -179,8 +179,8 @@ class Toridashi():
         tree.heading(1, text="コンテンツ名")
         tree.heading(2, text="パスワード")
         filer = FileManeger()
-        filer.reader()
-
+        data = filer.reader()
+        tree.insert("", "end" ,values=("Youtube", data["Youtube\n"]))
         tree.pack()
         sub.mainloop()
 
