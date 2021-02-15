@@ -147,10 +147,14 @@ class Run_():
                     kigoshori.whether_on)))
 
 
-
-
-
-
+class Toridashi():
+    def toridashi_window(self):
+        sub = tk.Tk()
+        sub.title("Meinpass - 取出")
+        sub.geometry("300x300")
+        sub.resizable(0, 0)
+        sub.configure(bg=DARKBLUE)
+        sub.mainloop()
 
 
 root = tk.Tk()
@@ -176,7 +180,7 @@ passen.place(x=100, y=200)
 inpmojisu = tk.Spinbox(root, from_=1, to=999, increment=1, width=3)
 inpmojisu.delete(0, 1)
 inpmojisu.insert(0, 8)
-inpmojisu.place(x=275, y=280)
+inpmojisu.place(x=255, y=280)
 # /SPINBOX
 
 eikoshori = Buttonshories(0)
@@ -200,17 +204,21 @@ kigo_c = Button_Modern()
 kigo_c.koniro("記号", 490, 400, lambda:kigoshori.shori(510,360))
 
 run = Button_Modern()
-run.koniro("実行", 340, 275, Run_().hyoji)
+run.koniro("実行", 320, 275, Run_().hyoji)
 
 on_button_copy = Copy()
 passcopy = Button_Modern()
-passcopy.koniro("コピー", 420, 275, lambda:on_button_copy.copy(passen))
+passcopy.koniro("コピー", 400, 275, lambda:on_button_copy.copy(passen))
 
 contencopy = Button_Modern()
 contencopy.koniro("コピー", 385, 110, lambda:on_button_copy.copy(contents_name))
 
 hozoner = Hozon()
 saving = Button_Modern()
-saving.koniro("保存", 500, 275, hozoner.hozon)
+saving.koniro("保存", 480, 275, hozoner.hozon)
+
+toridashi_shori = Toridashi()
+toridashi_ = Button_Modern()
+toridashi_.koniro("取出", 560, 275, toridashi_shori.toridashi_window)
 
 root.mainloop()
