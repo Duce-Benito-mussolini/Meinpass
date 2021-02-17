@@ -52,7 +52,7 @@ class FileManeger():
                     d[ichijihozonpass] = i
                 elif count != 1:
                     ichijihozonpass = i
-        return d
+        return d.keys(), d.values()
 
 
 class Hozon():
@@ -179,8 +179,9 @@ class Toridashi():
         tree.heading(1, text="コンテンツ名")
         tree.heading(2, text="パスワード")
         filer = FileManeger()
-        data = filer.reader()
-        tree.insert("", "end" ,values=("Youtube", data["Youtube\n"]))
+        data1, data2 = filer.reader()
+        tree.insert("", "end" ,values=(str(data1)[12:], str(data1)[12:]))
+        print(str(data1)[12:])
         tree.pack()
         sub.mainloop()
 
