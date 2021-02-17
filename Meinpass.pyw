@@ -180,8 +180,9 @@ class Toridashi():
         tree.heading(2, text="パスワード")
         filer = FileManeger()
         data1, data2 = filer.reader()
-        tree.insert("", "end" ,values=(str(data1)[12:], str(data1)[12:]))
-        print(str(data1)[12:])
+        data2 = str(data2)[14:-3].replace(r"\n", "")
+        print(data2)
+        tree.insert("", "end" ,values=(str(data1)[12:-5], data2))
         tree.pack()
         sub.mainloop()
 
