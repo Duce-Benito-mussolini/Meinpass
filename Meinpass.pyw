@@ -174,15 +174,22 @@ class Toridashi():
         tree["columns"] = (1,2)
         tree["show"] = "headings"
 
-        tree.column(1, width=150)
-        tree.column(2, width=150)
+        tree.column(1, width=300)
+        tree.column(2, width=300)
         tree.heading(1, text="コンテンツ名")
         tree.heading(2, text="パスワード")
         filer = FileManeger()
         data1, data2 = filer.reader()
-        data2 = str(data2)[14:-3].replace(r"\n", "")
-        print(data2)
-        tree.insert("", "end" ,values=(str(data1)[12:-5], data2))
+        count = 0
+        data1_list = []
+        for i in data1:
+            data1_list = data1_list + [i]
+        data2_list = []
+        for i in data2:
+            data2_list = data2_list + [i]
+        for i in data1:
+            tree.insert("", "end" ,values=(data1_list[count], data2_list[count]))
+            count += 1
         tree.pack()
         sub.mainloop()
 
