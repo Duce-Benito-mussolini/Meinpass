@@ -6,6 +6,7 @@ import pyperclip
 import tkinter.ttk as ttk
 from tkinter import messagebox
 
+
 try:
     ctypes.windll.shcore.SetProcessDpiAwareness(True)
 except:
@@ -14,23 +15,9 @@ except:
 WHITE = "#ffffff"
 DARKBLUE = "#16212c"
 
-
 class Copy():
     def copy(self, entry):
         pyperclip.copy(entry.get())
-
-
-class Button_Modern():
-    def koniro(self, tex, wx, wy, com):
-        button = tk.Button(
-            text=tex,
-            fg=WHITE,
-            bg=DARKBLUE,
-            activeforeground=WHITE,
-            activebackground=DARKBLUE,
-            width=6,
-            command=com)
-        button.place(x=wx, y=wy)
 
 
 class Renzoku():
@@ -57,7 +44,6 @@ class FileManeger():
     def reader(self):
         count = 0
         d = {}
-        a = []
         ichijihozonpass = ""
         with open("data.sav") as f:
             for i in f.readlines():
@@ -117,6 +103,19 @@ class On_Off():
         else:
             return "OFF"
         return "ERROR"
+
+
+class Button_Modern():
+    def koniro(self, tex, wx, wy, com):
+        button = tk.Button(
+            text=tex,
+            fg=WHITE,
+            bg=DARKBLUE,
+            activeforeground=WHITE,
+            activebackground=DARKBLUE,
+            width=6,
+            command=com)
+        button.place(x=wx, y=wy)
 
 
 class Label_Modern(Button_Modern):
