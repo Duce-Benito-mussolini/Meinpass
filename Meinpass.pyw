@@ -191,6 +191,7 @@ class Toridashi():
             tree.insert("", "end" ,values=(data1_list[count], data2_list[count]))
             count += 1
         tree.pack()
+        cococo = Copy()
         unko = tk.Button(
             sub,
             text="コピー",
@@ -199,7 +200,7 @@ class Toridashi():
             activeforeground=WHITE,
             activebackground=DARKBLUE,
             width=6,
-            command=lambda:Copy.copy(contents_name))
+            command=lambda:cococo.copy(contents_name))
         unko.pack()
         sub.mainloop()
 
