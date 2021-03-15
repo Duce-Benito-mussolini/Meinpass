@@ -163,7 +163,15 @@ class Run_():
 
 
 class Toridashi():
+    
+    def aaaa(self):
+        global tree
+        print("selected items:")
+        item_text = tree.set("I002")
+        print(item_text["2"])
+        
     def toridashi_window(self):
+        global tree
         sub = tk.Tk()
         sub.title("Meinpass - 取出")
         sub.geometry("800x800")
@@ -200,7 +208,7 @@ class Toridashi():
             activeforeground=WHITE,
             activebackground=DARKBLUE,
             width=6,
-            command=lambda:cococo.copy(contents_name))
+            command=lambda:self.aaaa())
         unko.pack()
         sub.mainloop()
 
