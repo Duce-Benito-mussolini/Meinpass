@@ -163,13 +163,13 @@ class Run_():
 
 
 class Toridashi():
-    
-    def aaaa(self):
+    def bbbb(self):
         global tree
-        print("selected items:")
-        item_text = tree.set("I002")
-        print(item_text["2"])
-        
+        for item in tree.selection():
+            item_text = tree.set(item)
+        cococo = pyperclip
+        cococo.copy(item_text["2"])
+
     def toridashi_window(self):
         global tree
         sub = tk.Tk()
@@ -208,7 +208,7 @@ class Toridashi():
             activeforeground=WHITE,
             activebackground=DARKBLUE,
             width=6,
-            command=lambda:self.aaaa())
+            command=lambda:self.bbbb())
         unko.pack()
         sub.mainloop()
 
