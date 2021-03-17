@@ -163,12 +163,15 @@ class Run_():
 
 
 class Toridashi():
-    def bbbb(self):
+    def copi(self):
         global tree
         for item in tree.selection():
             item_text = tree.set(item)
         cococo = pyperclip
-        cococo.copy(item_text["2"])
+        try:
+            cococo.copy(item_text["2"])
+        except:
+            pass
 
     def toridashi_window(self):
         global tree
@@ -208,7 +211,7 @@ class Toridashi():
             activeforeground=WHITE,
             activebackground=DARKBLUE,
             width=6,
-            command=lambda:self.bbbb())
+            command=lambda:self.copi())
         unko.pack()
         sub.mainloop()
 
