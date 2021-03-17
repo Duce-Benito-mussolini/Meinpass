@@ -163,7 +163,18 @@ class Run_():
 
 
 class Toridashi():
+    def copi(self):
+        global tree
+        for item in tree.selection():
+            item_text = tree.set(item)
+        cococo = pyperclip
+        try:
+            cococo.copy(item_text["2"])
+        except:
+            pass
+
     def toridashi_window(self):
+        global tree
         sub = tk.Tk()
         sub.title("Meinpass - 取出")
         sub.geometry("800x800")
@@ -191,6 +202,17 @@ class Toridashi():
             tree.insert("", "end" ,values=(data1_list[count], data2_list[count]))
             count += 1
         tree.pack()
+        cococo = Copy()
+        unko = tk.Button(
+            sub,
+            text="コピー",
+            fg=WHITE,
+            bg=DARKBLUE,
+            activeforeground=WHITE,
+            activebackground=DARKBLUE,
+            width=6,
+            command=lambda:self.copi())
+        unko.pack()
         sub.mainloop()
 
 
