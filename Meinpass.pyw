@@ -15,6 +15,8 @@ except:
 WHITE = "#ffffff"
 DARKBLUE = "#16212c"
 
+TWICE = lambda x: x * 2
+
 class Copy():
     def copy(self, entry):
         pyperclip.copy(entry.get())
@@ -57,12 +59,11 @@ class FileManeger():
     def line_edit(self, line, sen):
         with open("data.sav") as f:
             nakami = f.readlines()
-        nakami[line] = sen
+        nakami[line-1] = sen
         with open("data.sav", mode="w") as f:
             f.writelines(nakami)
 
-filer = FileManeger()
-filer.line_edit(1, "")
+
 class Hozon():
     def hozon(self):
         filer = FileManeger()
@@ -184,6 +185,9 @@ class Toridashi():
     def delete(self):
         the_item = tree.selection()[0]
         tree.delete(the_item)
+        filer = FileManeger()
+        filer.line_edit(TWICE(int(the_item[3]))+1, "")
+        filer.line_edit(TWICE(int(the_item[3])), "")
 
     def toridashi_window(self):
         global tree
