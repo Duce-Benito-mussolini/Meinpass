@@ -53,8 +53,16 @@ class FileManeger():
                 elif count != 1:
                     ichijihozonpass = i
         return d.keys(), d.values()
+    
+    def line_edit(self, line, sen):
+        with open("data.sav") as f:
+            nakami = f.readlines()
+        nakami[line] = sen
+        with open("data.sav", mode="w") as f:
+            f.writelines(nakami)
 
-
+filer = FileManeger()
+filer.line_edit(1, "")
 class Hozon():
     def hozon(self):
         filer = FileManeger()
