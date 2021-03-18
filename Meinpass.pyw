@@ -172,6 +172,10 @@ class Toridashi():
             cococo.copy(item_text["2"])
         except:
             pass
+    
+    def delete(self):
+        the_item = tree.selection()[0]
+        tree.delete(the_item)
 
     def toridashi_window(self):
         global tree
@@ -203,7 +207,7 @@ class Toridashi():
             count += 1
         tree.pack()
         cococo = Copy()
-        unko = tk.Button(
+        subcopi = tk.Button(
             sub,
             text="コピー",
             fg=WHITE,
@@ -212,7 +216,18 @@ class Toridashi():
             activebackground=DARKBLUE,
             width=6,
             command=lambda:self.copi())
-        unko.pack()
+        subcopi.pack()
+        subdelete = tk.Button(
+            sub,
+            text="削除",
+            fg=WHITE,
+            bg=DARKBLUE,
+            activeforeground=WHITE,
+            activebackground=DARKBLUE,
+            width=6,
+            command=lambda:self.delete()
+        )
+        subdelete.pack()
         sub.mainloop()
 
 
