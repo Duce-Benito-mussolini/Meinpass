@@ -188,6 +188,7 @@ class Toridashi():
         filer = FileManeger()
         filer.line_edit(TWICE(int(the_item[3]))+1, "")
         filer.line_edit(TWICE(int(the_item[3])), "")
+        tree.selection_remove(tree.selection())
 
     def toridashi_window(self):
         global tree
